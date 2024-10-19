@@ -9,7 +9,7 @@
 <body>
     <nav class="navbar">
         <div class="logo">
-            <a href="#"><img src="" >logo</a>
+            <a href="#"><img src="" alt="">logo</a>
         </div>
         <div class="photo">
             <ul class="nav-links">
@@ -20,7 +20,7 @@
                 <li><a href="notes.html">Notes</a></li>
             </ul>
             <div>
-                <a href="#"><img style="height:3rem; width:3rem ; border-radius:50%" src="/profile.png" alt=""></a>
+                <a href="#"><img style="height:3rem; width:3rem; border-radius:50%" src="/profile.png" alt=""></a>
             </div>
         </div>
     </nav>
@@ -29,17 +29,19 @@
         <form id="resumeForm">
             <fieldset>
                 <legend>Personal Information</legend>
-                <label for="photo">Upload your photo:</label>
-                <input style="margin-bottom: 8px;" type="file" id="photo" name="photo" required>
+                <label for="resumeFile">Upload your resume:</label>
+                <input style="margin-bottom: 8px;" type="file" accept="image/jpeg, image/png, image/jpg" id="resumeFile" name="resumeFile" required>
+                <p id="fileName" style="display: none;">Uploaded File: <span id="fileNameDisplay"></span></p>
+                
                 <label for="name">Full Name:</label>
                 <input type="text" id="name" name="name" required>
-
+                
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
-
+                
                 <label for="linkedin">LinkedIn Profile URL:</label>
                 <input type="url" id="linkedin" name="linkedin" required>
-
+                
                 <label for="phone">Phone Number:</label>
                 <input type="tel" id="phone" name="phone" required>
             </fieldset>
@@ -48,10 +50,10 @@
                 <legend>Educational Details</legend>
                 <label for="tenth">10th Grade (School Name, Year, Percentage):</label>
                 <input type="text" id="tenth" name="tenth" required>
-
+                
                 <label for="twelfth">12th Grade (School Name, Year, Percentage):</label>
                 <input type="text" id="twelfth" name="twelfth" required>
-
+                
                 <label for="graduation">Graduation (College Name, Year, Percentage/CGPA):</label>
                 <input type="text" id="graduation" name="graduation" required>
             </fieldset>
@@ -66,18 +68,17 @@
                 <legend>Work Experience</legend>
                 <label for="company">Company Name:</label>
                 <input type="text" id="company" name="company">
-
+                
                 <label for="role">Role:</label>
                 <input type="text" id="role" name="role">
-
+                
                 <label for="experience">Years of Experience:</label>
                 <input type="number" id="experience" name="experience" min="0">
             </fieldset>
-
+            
             <fieldset>
-                <legend>Achievements</legend>
-                <label for="achievements">List your achievements (if any):</label>
-                <textarea id="achievements" name="achievements" rows="4"></textarea>
+                <legend>Achievements(comma seperated)</legend>
+                <input type="text" id="achievements" name="achievements">
             </fieldset>
 
             <fieldset>
@@ -91,11 +92,69 @@
     </div>
 
     <script>
+        document.getElementById('resumeFile').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            const fileNameDisplay = document.getElementById('fileNameDisplay');
+            const fileNameParagraph = document.getElementById('fileName');
+
+            if (file) {
+                fileNameDisplay.textContent = file.name;
+                fileNameParagraph.style.display = 'block'; // Show the filename
+            } else {
+                fileNameParagraph.style.display = 'none'; // Hide if no file
+            }
+        });
+
         document.getElementById("resumeForm").addEventListener("submit", function(event) {
             event.preventDefault();
+            
             const formData = new FormData(event.target);
-            const queryParams = new URLSearchParams(formData).toString();
-            window.location.href = `resume.html?${queryParams}`;
+            
+            // Fetch form values
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const linkedin = formData.get('linkedin');
+            const phone = formData.get('phone');
+
+            // Process educational details
+            const tenth = formData.get('tenth').split(',').map(detail => detail.trim());
+            const twelfth = formData.get('twelfth').split(',').map(detail => detail.trim());
+            const graduation = formData.get('graduation').split(',').map(detail => detail.trim());
+
+            // Skills as an array
+            const skills = formData.get('skills').split(',').map(skill => skill.trim());
+
+            const company = formData.get('company') || 'N/A';
+            const role = formData.get('role') || 'N/A';
+            const experience = formData.get('experience') || 'N/A';
+            const achievements = formData.get('achievements').split(',').map(achievement => achievement.trim());
+            const careerObjective = formData.get('careerObjective');
+
+            // Handle resume file
+            const resumeFile = formData.get('resumeFile');
+            const resumeFileName = resumeFile ? resumeFile.name : 'No file uploaded';
+
+            // Prepare data for session storage
+            const resumeDetails = {
+                name,
+                email,
+                linkedin,
+                phone,
+                educationalDetails: {
+                    tenth,
+                    twelfth,
+                    graduation
+                },
+                skills,
+                company,
+                role,
+                experience,
+                achievements,
+                careerObjective,
+                resumeFileName // Store the uploaded file name
+            };
+            sessionStorage.setItem('resumeDetails', JSON.stringify(resumeDetails));
+            window.location.href = 'resume.html';
         });
     </script>
 </body>

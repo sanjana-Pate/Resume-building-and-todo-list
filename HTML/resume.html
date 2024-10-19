@@ -1,0 +1,171 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Resume</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin-left: 20rem;
+        }
+        
+        .container {
+            display: flex;
+            width: 70%;
+            border: 2px solid black;
+        }
+        
+        .sidebar {
+            background-color: #f0f4f8;
+            padding: 20px;
+            width: 35%;
+            box-sizing: border-box;
+            border-right: 1px solid #d3d3d3;
+        }
+        
+        .profile {
+            text-align: center;
+        }
+        
+        .profile-picture {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            margin-bottom: 20px;
+        }
+        
+        .name {
+            font-size: 22px;
+            color: #2378aa;
+            margin-bottom: 10px;
+        }
+        
+        .contact,
+        .communication {
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        
+        h2 {
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #555;
+        }
+        
+        .main-content {
+            padding: 30px;
+            padding-left: 80px;
+            width: 65%;
+            box-sizing: border-box;
+        }
+        
+        .skills,
+        .education,
+        .achievement,
+        .project {
+            margin-bottom: 30px;
+        }
+        
+        .skills h2,
+        .education h2,
+        .achievement h2,
+        .project h2 {
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #333;
+        }
+        
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+        
+        p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body >
+    <h1 style="margin-left:17rem; color:blue">Resume</h1>
+    <script>
+        function displayDetails() {
+            const resumeDetails = JSON.parse(sessionStorage.getItem('resumeDetails'));
+            const detailsDiv = document.getElementById('resumeDetails');
+            detailsDiv.innerHTML = `
+                <div class="container">
+                    <div class="sidebar">
+                        <div class="profile">
+                            <h1 class="name">Name: ${resumeDetails.name}</h1>
+                        </div>
+
+                        <div class="contact">
+                            <h2>Contact</h2>
+                            <hr>
+                            <p>Phone No: ${resumeDetails.phone}</p>
+                            <p>Email: ${resumeDetails.email}</p>
+                            <p>LinkedIn: <a href="${resumeDetails.linkedin}" target="_blank">${resumeDetails.linkedin}</a></p>
+                        </div>
+                        <hr>
+
+                        <div class="communication">
+                            <h2>Career Objective</h2>
+                            <hr>
+                            <div>
+                                <p style="word-wrap: break-word;">${resumeDetails.careerObjective}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="main-content">
+                        <div class="skills">
+                            <h2>Skills</h2>
+                            <ul>
+                                ${resumeDetails.skills.map(skill => `<li>${skill}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <hr>
+
+                        <div class="education">
+                            <h2>Education</h2>
+                            <p><strong>10th Grade:</strong> ${resumeDetails.educationalDetails.tenth.join(', ')}</p>
+                            <p><strong>12th Grade:</strong> ${resumeDetails.educationalDetails.twelfth.join(', ')}</p>
+                            <p><strong>Graduation:</strong> ${resumeDetails.educationalDetails.graduation.join(', ')}</p>
+                        </div>
+                        <hr/>
+
+                        <div class="achievement">
+                            <h2>Achievement</h2>
+                            <ul>${resumeDetails.achievements.map(achievement => `<li>${achievement}</li>`).join('')}</ul>
+                        </div>
+                        <hr>
+
+                        <div class="project">
+                            <h2>Work Experience</h2>
+                            <p><strong>Company:</strong> ${resumeDetails.company || 'N/A'}</p>
+                            <p><strong>Role:</strong> ${resumeDetails.role || 'N/A'}</p>
+                            <p><strong>Years of Experience:</strong> ${resumeDetails.experience || 'N/A'}</p>
+                        </div>
+                        <hr>
+
+                    </div>
+                </div>
+            `;
+        }
+
+        document.addEventListener('DOMContentLoaded', displayDetails);
+    </script>
+
+    <div id="resumeDetails"></div>
+</body>
+
+</html>
