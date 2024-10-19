@@ -46,31 +46,29 @@
 .nav-links a:hover {
     background-color: #f5f5f5;
 }
-
-
 body {
     font-family: Arial, sans-serif;
     background-color: #e0f7fa; /* Light blue background */
     display: flex;
+    /* justify-content: center; */
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     height: 100vh;
 }
 
 .form-container {
     background-color: #ffffff;
-    padding: 25px;
+    padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    margin-left: 2rem;
     border: 2px solid #b3e5fc; /* Light blue border */
 }
 
 h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #181d1d; /* Darker shade of blue */
+    margin: 3rem;
+    color: #0288d1; /* Darker shade of blue */
 }
 
 form {
@@ -79,24 +77,26 @@ form {
 }
 
 label {
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     color: #007bb2; /* Blue for labels */
 }
 
-input[type="text"] {
+textarea {
     padding: 10px;
     margin-bottom: 20px;
-    border: 1px solid #b3e5fc; /* Light blue border for inputs */
+    border: 1px solid #b3e5fc; /* Light blue border */
     border-radius: 5px;
     background-color: #e1f5fe; /* Very light blue background */
-    color: #1a1c1d; /* Blue text */
+    color: #0277bd; /* Blue text */
+    resize: none; /* To disable resizing */
+    height: 100px;
 }
 
-input[type="text"]::placeholder {
+textarea::placeholder {
     color: #81d4fa; /* Light placeholder color */
 }
 
-input[type="text"]:focus {
+textarea:focus {
     outline: none;
     border-color: #0288d1; /* Slightly darker blue on focus */
 }

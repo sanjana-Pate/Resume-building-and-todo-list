@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+</head>
+<body style="font-family: Arial, sans-serif;">
+    <div style="display: flex; width: 60%; border: 2px solid black;">
+        <div style="background-color: #f0f4f8; padding: 20px; width: 35%; box-sizing: border-box; border-right: 1px solid #d3d3d3;">
+            <div style="text-align: center;">
+                <img id="profilePic" alt="Profile Picture" style="border-radius: 50%; width: 150px; height: 150px; margin-bottom: 20px;">
+                <h1 id="name" style="font-size: 22px; color: #2378aa; margin-bottom: 10px;">Name</h1>
+            </div>
+
+            <div style="margin-bottom: 30px; margin-top: 60px;">
+                <h2 style="font-size: 18px; text-transform: uppercase; letter-spacing: 1px; color: #555;">Contact</h2>
+                <hr>
+                <p id="phone" style="margin: 10px 0;">Phone</p>
+                <p id="email" style="margin: 10px 0;">Email</p>
+                <p id="linkedin" style="margin: 10px 0;">LinkedIn</p>
+            </div>
+            <hr>
+
+            <div>
+                <h2 style="font-size: 18px; margin-top: 60px; text-transform: uppercase; letter-spacing: 1px; color: #555;">Career Objective</h2>
+                <hr>
+                <p id="careerObjective" style="margin: 10px 0;">Career Objective</p>
+            </div>
+        </div>
+
+        <div style="padding: 30px; padding-left: 80px; width: 65%; box-sizing: border-box;">
+            <div style="margin-bottom: 30px;">
+                <h2 style="font-size: 20px; text-transform: uppercase; letter-spacing: 1px; color: #333;">Skills</h2>
+                <ul id="skillsList" style="list-style: none; padding: 0; margin: 10px 0;">
+                    <!-- Skills will be populated here -->
+                </ul>
+            </div>
+            <hr>
+            <div style="margin-bottom: 30px;">
+                <h2 style="font-size: 20px; text-transform: uppercase; letter-spacing: 1px; color: #333;">Education</h2>
+                <p id="tenth" style="margin: 10px 0;"><strong>10th Grade</strong></p>
+                <p id="twelfth" style="margin: 10px 0;"><strong>12th Grade</strong></p>
+                <p id="graduation" style="margin: 10px 0;"><strong>Graduation</strong></p>
+            </div>
+
+            <div style="margin-bottom: 30px;">
+                <h2 style="font-size: 20px; text-transform: uppercase; letter-spacing: 1px; color: #333;">Achievements</h2>
+                <p id="achievements" style="margin: 10px 0;">Achievements</p>
+            </div>
+            <hr>
+            <div style="margin-bottom: 30px;">
+                <h2 style="font-size: 20px; text-transform: uppercase; letter-spacing: 1px; color: #333;">Work Experience</h2>
+                <ul style="list-style: none; margin: 10px 0;">
+                    <li id="company">Company Name</li>
+                    <li id="role">Role</li>
+                    <li id="experience">Years of Experience</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Populate the resume page with the stored data
+        document.getElementById('name').textContent = localStorage.getItem('name');
+        document.getElementById('email').textContent = localStorage.getItem('email');
+        document.getElementById('phone').textContent = localStorage.getItem('phone');
+        document.getElementById('linkedin').textContent = localStorage.getItem('linkedin');
+        document.getElementById('careerObjective').textContent = localStorage.getItem('careerObjective');
+        
+        document.getElementById('tenth').textContent = localStorage.getItem('tenth');
+        document.getElementById('twelfth').textContent = localStorage.getItem('twelfth');
+        document.getElementById('graduation').textContent = localStorage.getItem('graduation');
+        
+        document.getElementById('achievements').textContent = localStorage.getItem('achievements');
+        document.getElementById('company').textContent = localStorage.getItem('company');
+        document.getElementById('role').textContent = localStorage.getItem('role');
+        document.getElementById('experience').textContent = localStorage.getItem('experience') + " years";
+
+        // Skills
+        const skills = localStorage.getItem('skills').split(',');
+        const skillsList = document.getElementById('skillsList');
+        skills.forEach(skill => {
+            const li = document.createElement('li');
+            li.textContent = skill.trim();
+            skillsList.appendChild(li);
+        });
+    </script>
+</body>
+</html>

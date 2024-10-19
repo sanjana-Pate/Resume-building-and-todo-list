@@ -38,6 +38,7 @@
         }
         .navbar {
             display: flex;
+            width: 100%;
             justify-content: space-between;
             align-items: center;
             padding: 10px 30px ;
@@ -66,6 +67,7 @@
         }
         .nav-links li{
             border: none;
+            width: 6rem;
             background-color:#d3e6f9;;
         }
         .nav-links a {
