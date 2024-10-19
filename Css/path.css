@@ -1,0 +1,73 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e0f7fa; /* Light blue background */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form-container {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    border: 2px solid #b3e5fc; /* Light blue border */
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #181d1d; /* Darker shade of blue */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 8px;
+    color: #007bb2; /* Blue for labels */
+}
+
+input[type="text"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #b3e5fc; /* Light blue border for inputs */
+    border-radius: 5px;
+    background-color: #e1f5fe; /* Very light blue background */
+    color: #1a1c1d; /* Blue text */
+}
+
+input[type="text"]::placeholder {
+    color: #81d4fa; /* Light placeholder color */
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #0288d1; /* Slightly darker blue on focus */
+}
+
+.submit-btn {
+    background-color: #0288d1;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+}
+
+.submit-btn:hover {
+    background-color: #0277bd; /* Darker blue on hover */
+}
