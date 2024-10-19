@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Form</title>
+    <link rel="stylesheet" href="/Css/resumedetail.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="#"><img src="" >logo</a>
+        </div>
+        <div class="photo">
+            <ul class="nav-links">
+                <li><a href="home_page.html">Home</a></li>
+                <li><a href="resumedetail.html">Resume</a></li>
+                <li><a href="todolist.html">To-do</a></li>
+                <li><a href="#">Folder</a></li>
+                <li><a href="#">Project</a></li>
+            </ul>
+            <div>
+                <a href="#"><img style="height:3rem; width:3rem ; border-radius:50%" src="/profile.png" alt=""></a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Resume Form</h1>
+        <form id="resumeForm">
+            <fieldset>
+                <legend>Personal Information</legend>
+                <label for="photo">Upload your photo:</label>
+                <input style="margin-bottom: 8px;" type="file" id="photo" name="photo" required>
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="linkedin">LinkedIn Profile URL:</label>
+                <input type="url" id="linkedin" name="linkedin" required>
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+            </fieldset>
+
+            <fieldset>
+                <legend>Educational Details</legend>
+                <label for="tenth">10th Grade (School Name, Year, Percentage):</label>
+                <input type="text" id="tenth" name="tenth" required>
+
+                <label for="twelfth">12th Grade (School Name, Year, Percentage):</label>
+                <input type="text" id="twelfth" name="twelfth" required>
+
+                <label for="graduation">Graduation (College Name, Year, Percentage/CGPA):</label>
+                <input type="text" id="graduation" name="graduation" required>
+            </fieldset>
+
+            <fieldset>
+                <legend>Skills</legend>
+                <label for="skills">List your skills (comma separated):</label>
+                <input type="text" id="skills" name="skills" required>
+            </fieldset>
+
+            <fieldset>
+                <legend>Work Experience</legend>
+                <label for="company">Company Name:</label>
+                <input type="text" id="company" name="company">
+
+                <label for="role">Role:</label>
+                <input type="text" id="role" name="role">
+
+                <label for="experience">Years of Experience:</label>
+                <input type="number" id="experience" name="experience" min="0">
+            </fieldset>
+
+            <fieldset>
+                <legend>Achievements</legend>
+                <label for="achievements">List your achievements (if any):</label>
+                <textarea id="achievements" name="achievements" rows="4"></textarea>
+            </fieldset>
+
+            <fieldset>
+                <legend>Career Objective</legend>
+                <label for="careerObjective">State your career objective:</label>
+                <textarea id="careerObjective" name="careerObjective" rows="4" required></textarea>
+            </fieldset>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("resumeForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const queryParams = new URLSearchParams(formData).toString();
+            window.location.href = `resume.html?${queryParams}`;
+        });
+    </script>
+</body>
+</html>

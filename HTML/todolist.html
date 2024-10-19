@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="/Css/todo.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="#"><img src="" >logo</a>
+        </div>
+        <div class="photo">
+
+            <div>
+                <ul class="nav-links">
+                    <li><a href="home_page.html">Home</a></li>
+                    <li><a href="resumedetail.html">Resume</a></li>
+                    <li><a href="todolist.html">To-do</a></li>
+                    <li><a href="#">Folder</a></li>
+                    <li><a href="#">Project</a></li>
+                </ul>
+            </div>
+            <div>
+                <a href="#"><img style="height:3rem; width:3rem ; border-radius:50%" src="/profile.png" alt=""></a>
+            </div>
+        </div>
+    </nav>
+    <div class="todo">
+        <h2>To-Do List</h2>
+    </div>
+<body>
+    <div class="todo">
+        <h2>Enter your Activities here...</h2>
+    </div>
+    <div class="container">
+        <input type="text" id="newTaskInput" placeholder="Add a new task...">
+        <button id="addTaskBtn">Add Task</button>
+         <br>
+        <h3 id="todoHeading">To-Do</h3>
+        <ul id="taskList"></ul>
+
+        <h3 id="doneHeading">Done Activities</h3>
+        <ul id="doneList"></ul>
+    </div>
+
+    <script>
+        const addTaskBtn = document.getElementById('addTaskBtn');
+        const newTaskInput = document.getElementById('newTaskInput');
+        const taskList = document.getElementById('taskList');
+        const doneList = document.getElementById('doneList');
+        const todoHeading = document.getElementById('todoHeading');
+        const doneHeading = document.getElementById('doneHeading');
+
+        function updateHeadings() {
+            todoHeading.style.display = taskList.children.length ? 'inline' : 'none';
+            doneHeading.style.display = doneList.children.length ? 'inline' : 'none';
+        }
+
+        function createTask(taskText) {
+            const li = document.createElement('li');
+
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.value = taskText;
+            input.setAttribute('readonly', 'readonly');
+
+            const completeBtn = document.createElement('button');
+            completeBtn.innerHTML = '✔'; 
+            completeBtn.classList.add('complete');
+
+            const editBtn = document.createElement('button');
+            editBtn.innerHTML = '📝';  
+            editBtn.classList.add('edit');
+
+            const deleteBtn = document.createElement('button');
+            deleteBtn.innerHTML = '❌';  
+            deleteBtn.classList.add('delete');
+
+            li.appendChild(input);
+            li.appendChild(completeBtn);
+            li.appendChild(editBtn);
+            li.appendChild(deleteBtn);
+            
+
+            taskList.appendChild(li);
+            taskList.appendChild(li);
+            updateHeadings(); 
+
+            completeBtn.addEventListener('click', function () {
+                taskList.removeChild(li);
+                createDoneTask(taskText); 
+                updateHeadings();
+            });
+
+            editBtn.addEventListener('click', function () {
+                if (editBtn.innerHTML === '📝') {
+                    input.removeAttribute('readonly');
+                    input.focus();
+                    editBtn.innerHTML = '💾';  
+                } else {
+                    input.setAttribute('readonly', 'readonly');
+                    editBtn.innerHTML = '📝'; 
+                }
+            });
+
+            deleteBtn.addEventListener('click', function () {
+                taskList.removeChild(li);
+                updateHeadings(); 
+            });
+        }
+
+        function createDoneTask(taskText) {
+            const li = document.createElement('li');
+
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.value = taskText;
+            input.setAttribute('readonly', 'readonly');
+
+            const restoreBtn = document.createElement('button');
+            restoreBtn.innerHTML = '↩'; 
+            restoreBtn.classList.add('restore');
+
+            li.appendChild(input);
+            li.appendChild(restoreBtn);
+
+           const j= doneList.appendChild(li);
+            updateHeadings(); 
+
+            restoreBtn.addEventListener('click', function () {
+                doneList.removeChild(li);
+                createTask(taskText); 
+                updateHeadings();
+            });
+        }
+
+        addTaskBtn.addEventListener('click', function () {
+            const taskText = newTaskInput.value.trim();
+
+            if (taskText) {
+                createTask(taskText);
+                newTaskInput.value = '';
+            }
+        });
+
+        newTaskInput.addEventListener('keypress', function (event) {
+            if (event.key === 'Enter') {
+                addTaskBtn.click();
+            }
+        });
+
+        updateHeadings();
+    </script>
+
+</body>
+</html>

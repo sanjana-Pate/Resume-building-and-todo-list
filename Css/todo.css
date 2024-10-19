@@ -1,0 +1,189 @@
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #e6f7ff;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+     
+          
+            padding: 20px;
+            border-radius: 10px;
+            margin: 2rem;
+        }
+
+        h1, h3 {
+            text-align: center;
+            color: #007acc;
+        }
+
+        #newTaskInput {
+            width: 50%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .nav-links a:hover {
+            background-color: #f5f5f5;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 30px ;
+            background-color: #d3e6f9;
+            box-shadow: 0 4px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo a {
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .nav-links {
+            list-style-type: none;
+            display: flex;
+            gap: 20px;
+        }
+        
+        .photo{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3px;
+        }
+        .nav-links li{
+            border: none;
+            background-color:#d3e6f9;;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        button {
+            background-color: #007acc;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 50%;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #005f99;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #f0f8ff;
+            padding: 3px;
+            margin-bottom: 10px;
+            border: 1px solid #007acc;
+            border-radius: 4px;
+            width: 50%;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        li input[type="text"] {
+            border: none;
+            padding-left: 4px;
+            background: transparent;
+            font-size: medium;
+            font-weight: 400;
+            width: 10%;
+            outline: none;
+        }
+
+        .edit, .delete, .complete {
+            cursor: pointer;
+            padding: 5px;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            width: 30px;
+            height: 30px;
+            font-size: 18px;
+            text-align: center;
+            line-height: 1.5;
+            margin-left: 3px;
+        }
+
+        .edit {
+            background-color: #e74c3c;
+            margin-right: 5px;
+        }
+
+        .complete {
+            background-color: #28a745;
+            margin-right: 5px;
+        }
+
+        .delete {
+            background-color: #e74c3c;
+        }
+
+        .edit:hover, .complete:hover, .delete:hover {
+            background-color: #c0392b;
+        }
+
+        .complete:hover {
+            background-color: #218838;
+        }
+
+        .restore {
+            background-color: #007acc;
+            cursor: pointer;
+            padding: 5px;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            width: 30px;
+            height: 30px;
+            font-size: 18px;
+            text-align: center;
+            line-height: 1.5;
+            margin-left: 30rem;
+        }
+        .complete{
+            margin-left: 25rem;
+        }
+        .restore:hover {
+            background-color: #005f99;
+        }
+        #tasklist,#donelist{
+            width: 50%;
+        }
+        #todoHeading, #doneHeading {
+            display: none;
+            margin-bottom: 10px;
+            
+        }
+        .todo{
+            padding: 6px;
+            margin: 2rem;
+        }
